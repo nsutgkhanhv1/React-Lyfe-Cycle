@@ -1,0 +1,13 @@
+mount : react có 2 DOM chạy song song , dom thật và dom ảo (virtual dom) . virtual dom sẽ đc tạo , sau đấy dùng dom api qua thư viện 
+react-dom để tính toán ra dom element cần thiết và hiển thị lên trình duyệt
+unmount : bỏ những dom cũ 
+thứ tự WillMount -> render -> DidMount
+CpnWillMount : đc gọi trc khi Cpn render trong lần đầu tiên thường dùng để hủy các evenListener , setTimeout , setInterVal tránh leak
+CpnWillUnMount : đc gọi khi bỏ những dom cũ
+CpnDidmount: đc gọi một lần duy nhất khi Cpn đc khởi tạo thường dùng cho các setTimeout , setInterVal
+CpnDidUpdate: đc gọi ngay sau cập nhật state và Cpn render lại
+shouldCpnUpdate(nextProps,nextState){
+	if(this.state == nextState){
+		return false;	
+	}
+} :trong truong hop Cpn con khong can thiet render lai khi Cpn cha thay doi
